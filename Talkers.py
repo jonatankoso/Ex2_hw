@@ -19,6 +19,7 @@ class Person(object):
 
     def set_fname(self, new_fname):
         '''
+        function updates first name of person
         :param new_fname: updated first name
         :return: none
         '''
@@ -26,6 +27,7 @@ class Person(object):
 
     def set_lname(self, new_lname):
         '''
+        function updates last name of person
         :param new_lname: updated last name
         :return: none
         '''
@@ -33,6 +35,7 @@ class Person(object):
 
     def set_age(self, new_age):
         '''
+        function updates age of person
         :param new_age: updated age
         :return: none
         '''
@@ -51,6 +54,7 @@ class Talker(Person):
 
     def talk(self, text: str):
         '''
+        function prints given string
         :param text: printed text
         :return: none
         '''
@@ -69,6 +73,7 @@ class HappyTalker(Talker):
 
     def talk(self, text: str):
         '''
+        function prints given string
         :param text: printed text
         :return: none
         '''
@@ -86,6 +91,7 @@ class SlowTalker(Talker):
 
     def talk(self, text: str):
         '''
+        function prints given string
         :param text: printed text
         :return: none
         '''
@@ -104,6 +110,7 @@ class StutterTalker(Talker):
 
     def talk(self, text: str):
         '''
+        function prints given string
         :param text: printed text
         :return: none
         '''
@@ -118,6 +125,7 @@ class StutterTalker(Talker):
 
 def makeThemTalk(talkerList, sayWhat):
     '''
+    function prints given text based on speech of people in list
     :param list talkerList: list of people
     :param str sayWhat: text for the people in list to say
     :return: none

@@ -1,4 +1,4 @@
-def word_count(file_path):
+def word_count(file_path: str):
     try:
         with open(file_path, 'r') as file:
             content = file.read()
@@ -15,7 +15,7 @@ def word_count(file_path):
         print(f"Error reading the file '{file_path}'.")
 
 
-def word_appear(file_path):
+def word_appear(file_path: str):
     try:
         with open(file_path, 'r') as file:
             content = file.read()
@@ -30,13 +30,17 @@ def word_appear(file_path):
                 else:
                     wordsDict[word] = wordsDict[word] + 1
 
-            for key, value in wordsDict.items():
-                print(f"{key}: {value}")
+            print_dict(wordsDict)
 
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
     except IOError:
         print(f"Error reading the file '{file_path}'.")
+
+
+def print_dict(givenDict: dict):
+    for key, value in givenDict.items():
+        print(f"{key}: {value}")
 
 if __name__ == "__main__":
     path = r"C:\Users\magshimim\Documents\Omega Projects\Python\lesson2\one.txt"

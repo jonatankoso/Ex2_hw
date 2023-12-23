@@ -1,4 +1,9 @@
 def word_count(file_path: str):
+    '''
+    function counts and prints the number of words in given file
+    :param file_path: path to file
+    :return: none
+    '''
     try:
         with open(file_path, 'r') as file:
             content = file.read()
@@ -16,6 +21,11 @@ def word_count(file_path: str):
 
 
 def word_appear(file_path: str):
+    '''
+    function counts the number of times each word has appeared in a file
+    :param file_path: file path
+    :return: none
+    '''
     try:
         with open(file_path, 'r') as file:
             content = file.read()
@@ -39,6 +49,11 @@ def word_appear(file_path: str):
 
 
 def print_dict(givenDict: dict):
+    '''
+    function prints a dictionary
+    :param givenDict: dictionary to print
+    :return: none
+    '''
     for key, value in givenDict.items():
         print(f"{key}: {value}")
 

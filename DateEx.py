@@ -11,3 +11,6 @@ class Date(object):
     def set_year(self, new_year: str):
         self.year = new_year
 
+    def __str__(self):
+        return f"{self.day}.{self.month}.{self.year}"
+

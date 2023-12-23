@@ -56,6 +56,22 @@ class StutterTalker(Talker):
 
         print(result)
 
+
+def makeThemTalk(talkerList, sayWhat):
+    for talker in talkerList:
+        if talker.age > 10:
+            print(talker.fname + ": ", end="")
+            talker.talk(sayWhat)
+
 if __name__ == "__main__":
+    talkersList = []
     t1 = StutterTalker("may", "cohen", 19)
-    t1.talk("hey there mate")
+    t2 = HappyTalker("yan", "zikri", 23)
+    t3 = SlowTalker("noam", "tzabari", 30)
+    t4 = StutterTalker("noy", "furman", 9)
+
+    talkersList.append(t1)
+    talkersList.append(t2)
+    talkersList.append(t3)
+    talkersList.append(t4)
+    makeThemTalk(talkersList, "How Are You?")

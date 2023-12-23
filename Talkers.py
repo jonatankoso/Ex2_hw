@@ -28,6 +28,34 @@ class Talker(Person):
         print(text)
 
 
+class HappyTalker(Talker):
+    def __int__(self, fname: str, lname: str, age: int):
+        super.__init__(fname, lname, age)
+
+    def talk(self, text: str):
+        print(text + "!!!")
+
+class SlowTalker(Talker):
+    def __int__(self, fname: str, lname: str, age: int):
+        super.__init__(fname, lname, age)
+
+    def talk(self, text: str):
+        for letter in text:
+            print(letter + " ", end = "")
+
+class StutterTalker(Talker):
+    def __int__(self, fname: str, lname: str, age: int):
+        super.__init__(fname, lname, age)
+
+    def talk(self, text: str):
+        words = text.split()
+        result = ""
+        for word in words:
+            if len(word) > 0:
+                result += word[0] * 3 + word[1:] + " "
+
+        print(result)
+
 if __name__ == "__main__":
-    t1 = Talker("may", "cohen", 19)
-    t1.talk("hey")
+    t1 = StutterTalker("may", "cohen", 19)
+    t1.talk("hey there mate")

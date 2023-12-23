@@ -1,21 +1,26 @@
 class Person(object):
-    def __init__(self, fname: str, lname: str, age: int):
+    def __init__(self, fname: str, lname: str, age: str):
         '''
         :param str fname: first name of person
         :param str lname: second name of person
         :param int age: age of person
         :return: none
         '''
-
-        self.fname = fname
-        if age <= 0:
-            print("age cannot be negative or 0, age set to 1")
+        if not age.isnumeric():
+            print("age cannot be negative or 0 or aa string, age set to 1")
             self.age = 1
         else:
-            self.age = age
+            self.age = int(age)
 
-        self.fname = fname
-        self.lname = lname
+        if not fname.isalpha():
+            print("first name needs to include only letters")
+        else:
+            self.fname = fname
+
+        if not lname.isalpha():
+            print("last name needs to include only letters")
+        else:
+            self.lname = lname
 
     def set_fname(self, new_fname):
         '''
@@ -23,7 +28,10 @@ class Person(object):
         :param new_fname: updated first name
         :return: none
         '''
-        self.fname = new_fname
+        if not new_fname.isalpha():
+            print("last name needs to include only letters")
+        else:
+            self.fname = new_fname
 
     def set_lname(self, new_lname):
         '''
@@ -31,7 +39,10 @@ class Person(object):
         :param new_lname: updated last name
         :return: none
         '''
-        self.lname = new_lname
+        if not new_lname.isalpha():
+            print("last name needs to include only letters")
+        else:
+            self.lname = new_lname
 
     def set_age(self, new_age):
         '''
@@ -39,7 +50,11 @@ class Person(object):
         :param new_age: updated age
         :return: none
         '''
-        self.age = new_age
+        if not new_age.isnumeric():
+            print("age cannot be negative or 0 or aa string, age set to 1")
+            self.age = 1
+        else:
+            self.age = int(new_age)
 
 
 class Talker(Person):

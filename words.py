@@ -56,3 +56,15 @@ def print_dict(givenDict: dict):
     '''
     for key, value in givenDict.items():
         print(f"{key}: {value}")
+
+
+if __name__ == "__main__":
+    try:
+        path = r"C:\Users\magshimim\Documents\Omega Projects\Python\lesson2\one.txt"
+        word_count(path)
+        word_appear(path)
+
+    except FileNotFoundError:
+        print("File not found, check path")
+    except IOError:
+        print("Could not read file, check permissions")

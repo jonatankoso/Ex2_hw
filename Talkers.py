@@ -6,19 +6,21 @@ class Person(object):
         :param int age: age of person
         :return: none
         '''
-        if not age.isnumeric():
-            print("age cannot be negative or 0 or aa string, age set to 1")
-            self.age = 1
+        if not str(age).isnumeric():
+            print("age cannot be negative or 0 or a string")
+            raise TypeError()
         else:
             self.age = int(age)
 
         if not fname.isalpha():
             print("first name needs to include only letters")
+            raise TypeError()
         else:
             self.fname = fname
 
         if not lname.isalpha():
             print("last name needs to include only letters")
+            raise TypeError()
         else:
             self.lname = lname
 
@@ -30,6 +32,7 @@ class Person(object):
         '''
         if not new_fname.isalpha():
             print("last name needs to include only letters")
+            raise TypeError()
         else:
             self.fname = new_fname
 
@@ -41,6 +44,7 @@ class Person(object):
         '''
         if not new_lname.isalpha():
             print("last name needs to include only letters")
+            raise TypeError()
         else:
             self.lname = new_lname
 
@@ -50,9 +54,9 @@ class Person(object):
         :param new_age: updated age
         :return: none
         '''
-        if not new_age.isnumeric():
-            print("age cannot be negative or 0 or aa string, age set to 1")
-            self.age = 1
+        if not str(new_age).isnumeric():
+            print("age cannot be negative or 0 or a string")
+            raise TypeError()
         else:
             self.age = int(new_age)
 

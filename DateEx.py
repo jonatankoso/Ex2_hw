@@ -1,6 +1,8 @@
+from datetime import datetime, timedelta
+
 class Date(object):
     def __init__(self, date):
-        self.day, self.month, self.year = int(date.split("."))
+        self.day, self.month, self.year = date.split(".")
 
     def set_day(self, new_day: str):
         self.day = new_day
@@ -11,28 +13,31 @@ class Date(object):
     def set_year(self, new_year: str):
         self.year = new_year
 
-    def fix_date(self, day, month, year):
-        if day > 31:
-            month += 1
-            day -= 31
-        if month > 12:
-            year += 1
-            month -= 12
-
     def __str__(self):
         return f"{self.day}.{self.month}.{self.year}"
 
     def __add__(self, other):
-        new_year = self.year + other.year
-        new_month = self.month + other.month
-        new_day = self.day + other.day
+        selfDateFormat = datetime(int(self.year), int(self.month), int(self.day))
+        if isinstance(other, int):
+            return (selfDateFormat + timedelta(days=other)).strftime('%d-%m-%Y')
 
-        # Adjust the date components if they exceed their respective limits
-        if new_day > 31:
-            new_month += 1
-            new_day -= 31
-        if new_month > 12:
-            new_year += 1
-            new_month -= 12
+        elif isinstance(other, Date):
+            otherDateFormat = datetime(int(other.year), int(other.month), int(other.day))
+            difference = otherDateFormat - datetime.min
+            formatted_date = (selfDateFormat + difference).strftime('%d-%m-%Y')
+            return formatted_date
 
-        return Date(new_year, new_month, new_day)
+        else:
+            raise TypeError("Unsupported operand type. Expected an integer or Date object.")
+
+    def __sub__(self, other):
+        selfDateFormat = datetime(int(self.year), int(self.month), int(self.day))
+        otherDateFormat = datetime(int(other.year), int(other.month), int(other.day))
+        return (selfDateFormat - otherDateFormat).days
+
+
+
+if __name__ == "__main__":
+    date1 = Date("03.08.2005")
+    date2 = Date("01.08.2005")
+    print(date1 - date2)

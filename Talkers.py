@@ -8,7 +8,7 @@ class Person(object):
         '''
         if not str(age).isnumeric():
             print("age cannot be negative or 0 or a string")
-            raise TypeError()
+            raise ValueError()
         else:
             self.age = int(age)
 
@@ -56,7 +56,7 @@ class Person(object):
         '''
         if not str(new_age).isnumeric():
             print("age cannot be negative or 0 or a string")
-            raise TypeError()
+            raise ValueError()
         else:
             self.age = int(new_age)
 
@@ -155,14 +155,20 @@ def makeThemTalk(talkerList, sayWhat):
             talker.talk(sayWhat)
 
 if __name__ == "__main__":
-    talkersList = []
-    t1 = StutterTalker("may", "cohen", 19)
-    t2 = HappyTalker("yan", "zikri", 23)
-    t3 = SlowTalker("noam", "tzabari", 30)
-    t4 = StutterTalker("noy", "furman", 9)
+    try:
+        talkersList = []
+        t1 = StutterTalker("may", "cohen", 19)
+        t2 = HappyTalker("yan", "zikri", 23)
+        t3 = SlowTalker("noam", "tzabari", 30)
+        t4 = StutterTalker("noy", "furman", 9)
 
-    talkersList.append(t1)
-    talkersList.append(t2)
-    talkersList.append(t3)
-    talkersList.append(t4)
-    makeThemTalk(talkersList, "How Are You?")
+        talkersList.append(t1)
+        talkersList.append(t2)
+        talkersList.append(t3)
+        talkersList.append(t4)
+        makeThemTalk(talkersList, "How Are You?")
+    except TypeError:
+        print("Wrong type of operands")
+    except ValueError:
+        print("Wrong value of operands, check input")
+

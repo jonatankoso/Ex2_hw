@@ -35,9 +35,24 @@ class Date(object):
         otherDateFormat = datetime(int(other.year), int(other.month), int(other.day))
         return (selfDateFormat - otherDateFormat).days
 
+    def __eq__(self, other):
+        return self.year == other.year and self.month == other.month and self.day == other.day
+
+    def __gt__(self, other):
+        return (self - other) > 0
+
+    def __ge__(self, other):
+        return (self > other) or (self == other)
+
+    def __lt__(self, other):
+        return (self - other) < 0
+
+    def __le__(self, other):
+        return (self < other) or (self == other)
+
 
 
 if __name__ == "__main__":
-    date1 = Date("03.08.2005")
-    date2 = Date("01.08.2005")
-    print(date1 - date2)
+    date1 = Date("27.02.2007")
+    date2 = Date("27.07.2007")
+    print(date1 + 2)

@@ -56,8 +56,3 @@ def print_dict(givenDict: dict):
     '''
     for key, value in givenDict.items():
         print(f"{key}: {value}")
-
-if __name__ == "__main__":
-    path = r"C:\Users\magshimim\Documents\Omega Projects\Python\lesson2\one.txt"
-    word_count(path)
-    word_appear(path)

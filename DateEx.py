@@ -8,8 +8,10 @@ class Date(object):
         '''
         self.day, self.month, self.year = date.split(".")
         if not str(self.day).isnumeric() or not str(self.month).isnumeric() or not str(self.year).isnumeric():
-            print("operand not in correct format of date: dd.mm.yy")
-            raise TypeError()
+            print("date is negative or not in correct format of date: dd.mm.yy")
+            raise ValueError()
+        if self.year < "1990":
+            self.set_year(self.year)
 
     def set_day(self, new_day: str):
         '''
@@ -50,13 +52,20 @@ class Date(object):
         '''
         selfDateFormat = datetime(int(self.year), int(self.month), int(self.day))
         if isinstance(other, int):
-            return (selfDateFormat + timedelta(days=other)).strftime('%d-%m-%Y')
+            formatted_date = (selfDateFormat + timedelta(days=other))
+            formatted_year = formatted_date.year % 100
+            formatted_date = formatted_date.strftime('%d.%m')
+            if formatted_year < 10:
+                formatted_year = "0" + str(formatted_year)
+            return str(formatted_date) + "." + str(formatted_year)
 
         elif isinstance(other, Date):
             otherDateFormat = datetime(int(other.year), int(other.month), int(other.day))
             difference = otherDateFormat - datetime.min
-            formatted_date = (selfDateFormat + difference).strftime('%d-%m-%Y')
-            return formatted_date
+            formatted_date = (selfDateFormat + difference)
+            formatted_year = formatted_date.year % 100
+            formatted_date = formatted_date.strftime('%d.%m')
+            return str(formatted_date) + "." + str(formatted_year)
 
         else:
             raise TypeError("Unsupported operand type. Expected an integer or Date object.")
@@ -110,3 +119,24 @@ class Date(object):
         :return: True if the first date is before or equal to the second, False otherwise
         '''
         return (self < other) or (self == other)
+
+
+if __name__ == "__main__":
+    try:
+        d1 = Date("01.09.05")
+        d2 = Date("26.09.05")
+        d1.set_year("06")
+        print(d1)
+        print(d1 + d2)
+        print(d1 + 50000)
+        print(d1 - d2)
+        print(d1 == d2)
+        print(d1 >= d2)
+        print(d1 > d2)
+        print(d1 >= d2)
+        print(d1 < d2)
+        print(d1 <= d2)
+    except TypeError:
+        print("Enter parameters of correct type")
+    except ValueError:
+        print("Enter legal date in range")
